@@ -19,12 +19,24 @@ $(call inherit-product-if-exists, vendor/samsung/t869/vendor.mk)
 # Set preferred size for assets
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+# Audio
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/etc/tinyalsa-audio.xml:system/etc/tinyalsa-audio.xml \
+    $(LOCAL_PATH)/configs/etc/audio_policy.conf:system/etc/audio_policy.conf
+
+# GPS
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+PRODUCT_COPY_FILES += \
+    device/samsung/smdk4210-tab/init.smdk4210.gps.rc:root/init.smdk4210.gps.rc \
+    device/samsung/smdk4210-tab/configs/etc/gps.cer:system/etc/gps.cer \
+    device/samsung/smdk4210-tab/configs/etc/gps.xml:system/etc/gps.xml
+
+# Radio
+$(call inherit-product, build/target/product/telephony.mk)
 $(call inherit-product, vendor/cm/config/gsm.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, device/samsung/smdk4210-tab/device.mk)
-$(call inherit-product-if-exists, vendor/samsung/smdk4210-tab/vendor.mk)
-$(call inherit-product-if-exists, vendor/samsung/t869/vendor.mk)
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 PRODUCT_PACKAGES += \
     Mms \
