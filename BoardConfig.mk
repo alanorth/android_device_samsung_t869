@@ -22,3 +22,5 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/t869/overlay
 TARGET_OTA_ASSERT_DEVICE := t869,SGH-T869
 
 TARGET_KERNEL_CONFIG := cyanogenmod_t869_defconfig
+
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/t869/bluetooth
