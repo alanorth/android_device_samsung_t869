@@ -13,6 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+$(call inherit-product, device/samsung/smdk4210-tab/device.mk)
+$(call inherit-product-if-exists, vendor/samsung/t869/vendor.mk)
+
 # Set preferred size for assets
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 
@@ -25,4 +28,5 @@ $(call inherit-product-if-exists, vendor/samsung/t869/vendor.mk)
 
 PRODUCT_PACKAGES += \
     Mms \
-    SamsungServiceMode
+    SamsungServiceMode \
+    libsecril-client
