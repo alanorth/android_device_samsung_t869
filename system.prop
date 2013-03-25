@@ -6,3 +6,6 @@ ro.ril.hsxpa=1
 ro.ril.gprsclass=10
 # mdpi
 ro.sf.lcd_density=160
+
+# screen rotation for surfaceflinger
+ro.sf.hwrotation=270
